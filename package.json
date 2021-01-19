@@ -1,14 +1,13 @@
 {
   "name": "simplesteamapis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SteamApis.Com Package for easier use of the API",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "fs": "^0.0.1-security"
+    "axios": "^0.21.1"
   },
   "devDependencies": {},
   "scripts": {
