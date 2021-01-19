@@ -27,7 +27,7 @@ npm i steamapis
 Example:
 
 ```sh
-const steamapis = require("../index");
+const steamapis = require("steamapis");
 const api = new steamapis("API_KEY");
 
 (async () => {
