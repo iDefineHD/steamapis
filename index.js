@@ -5,6 +5,28 @@ class steamapis {
     this.api_key = api_key;
   }
 
+  //Added (Optional Query Parameters) as different routes
+  async getLegacyInventory(steamID, appID, contextID) {
+    return this.baseRequestWithParameter(
+      `steam/inventory/${steamID}/${appID}/${contextID}`,
+      `legacy=1`
+    );
+  }
+
+  async compactItems(appID) {
+    return this.baseRequestWithParameter(
+      `market/items/${appID}`,
+      `format=compact`
+    );
+  }
+
+  async CompactItemsWithValue(appID, compact_value) {
+    return this.baseRequestWithParameter(
+      `market/items/${appID}`,
+      `format=compact&compact_value=${compact_value}`
+    );
+  }
+
   // Seperated Endpoints for respective categories
 
   //Steam Section
@@ -14,7 +36,7 @@ class steamapis {
   }
 
   async getProfile(steamID) {
-    return this.baseRequest(`steam/${steamID}`);
+    return this.baseRequest(`steam/profile/${steamID}`);
   }
 
   // Market Endpoint
@@ -23,11 +45,11 @@ class steamapis {
     return this.baseRequest("market/stats");
   }
 
-  async appInfo(appID) {
+  async app(appID) {
     return this.baseRequest(`market/app/${appID}`);
   }
 
-  async appsInfo() {
+  async apps() {
     return this.baseRequest("market/apps");
   }
 
@@ -44,11 +66,6 @@ class steamapis {
   }
 
   // Images
-
-  async itemImage(appID, market_hash_name) {
-    return this.baseRequest(`image/item/${appID}/${market_hash_name}`);
-  }
-
   async itemsImage(appID) {
     return this.baseRequest(`image/items/${appID}`);
   }
@@ -58,6 +75,17 @@ class steamapis {
   async baseRequest(endpoint) {
     const res = await axios({
       url: `http://api.steamapis.com/${endpoint}?api_key=${this.api_key}`,
+      method: "GET",
+      headers: {
+        "User-Agent": "STEAMAPIS NPM PACKAGE",
+      },
+    });
+    return res.data;
+  }
+
+  async baseRequestWithParameter(endpoint, QueryParameter) {
+    const res = await axios({
+      url: `http://api.steamapis.com/${endpoint}?api_key=${this.api_key}&${QueryParameter}`,
       method: "GET",
       headers: {
         "User-Agent": "STEAMAPIS NPM PACKAGE",

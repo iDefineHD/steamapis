@@ -1,9 +1,9 @@
 const steamapis = require("../index");
-const api = new steamapis("API_KEY"); // Put api key here
+const api = new steamapis("API_KEY");
 
 (async () => {
   try {
-    const inventory = await api.getInventory("76561198027608071", 730, 2);
+    const inventory = await api.CompactItemsWithValue(730, "latest");
     console.log(inventory);
   } catch (err) {
     console.log(err);
