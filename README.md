@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to SteamApis 👋</h1>
+<h1 align="center">Welcome to SimpleSteamApis 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
@@ -27,7 +27,7 @@ npm i steamapis
 Example:
 
 ```sh
-const steamapis = require("steamapis");
+const steamapis = require("simplesteamapis");
 const api = new steamapis("API_KEY");
 
 (async () => {

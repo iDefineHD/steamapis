@@ -1,4 +1,4 @@
-const steamapis = require("../index");
+const steamapis = require("simplesteamapis");
 const api = new steamapis("API_KEY");
 
 (async () => {

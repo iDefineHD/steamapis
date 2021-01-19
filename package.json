@@ -1,0 +1,31 @@
+{
+  "name": "simplesteamapis",
+  "version": "0.0.1",
+  "description": "SteamApis.Com Package for easier use of the API",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iDefineHD/steamapis.git"
+  },
+  "keywords": [
+    "steamapis",
+    "steamapis.com"
+  ],
+  "author": "Ashley Bridges",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iDefineHD/steamapis/issues"
+  },
+  "homepage": "https://github.com/iDefineHD/steamapis#readme"
+}
