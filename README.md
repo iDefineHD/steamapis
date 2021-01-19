@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-yarn add steamapis
+yarn add simplesteamapis
 ```
 
 or
 
 ```sh
-npm i steamapis
+npm i simplesteamapis
 ```
 
 ## Usage
