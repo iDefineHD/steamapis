@@ -8,7 +8,7 @@
 
 > SteamApis.Com Package for easier use of the API
 
-### 🏠 [Homepage](steamapis.com)
+### 🎉 [Used For] (http://steamapis.com) 
 
 ## Install
 
