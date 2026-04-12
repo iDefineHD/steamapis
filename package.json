@@ -1,6 +1,6 @@
 {
   "name": "simplesteamapis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SteamApis.Com Package for easier use of the API",
   "main": "index.js",
   "directories": {

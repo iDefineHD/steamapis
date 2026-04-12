@@ -1,96 +1,79 @@
-<h1 align="center">Welcome to SimpleSteamApis 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
-</p>
+# SimpleSteamApis 👋
 
-> SteamApis.Com Package for easier use of the API
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg?cacheSeconds=2592000)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
-### 🎉 [Project Home](http://steamapis.com) 
+> A simple, zero-dependency Node.js wrapper for the [SteamApis.com](http://steamapis.com) API using native `fetch`.
 
-## Install
+&nbsp;
 
-```sh
-yarn add simplesteamapis
-```
+## 📋 Requirements:
 
-or
+- Node.js **18+**
+- A [SteamApis.com](http://steamapis.com) API key
 
-```sh
-npm i simplesteamapis
-```
+&nbsp;
 
-## Query Params
-<dl>
- <dt> getLegacyInventory(steamID, appID, contextID) </dt>
-   <dd> Used to get the legacy version of the users inventory. this includes some information that is not included in the new endpoints data.</dd>
- <dt>compactItems(appID)</dt>
-    <dd>Used to gather a compact version of the items from a specific game, provided an appID is provided, for example 730 (CSGO)</dd>
- <dt>CompactItemsWithValue(appID, compact_value)</dt>
-    <dd>Used to gather a compact version of the items from a specific game, like above. But with the added feature of allowing a user set timeframe for prices.</dd>
- </dl>
- 
+## 📦 Install:
 
- <h2> Steam Specific </h2>
- <dl>
-  <dt>getInventory(steamID, appID, contextID)</dt>
-     <dd>Used to gather a users inventory from steam. If supplied with a steamID, appID and contextID, this is used in the example below.</dd>
-  <dt>getProfile(steamID)</dt>
-    <dd>Used to return all information regarding a steam users profile, such as name, avatar etc.</dd>
-  </dl>
-  
-
- <h2>Market Specific</h2>
- <dl>
-  <dt>siteStats()</dt>
-    <dd>Used to return the stats of how many items have been scanned/requests that have been served by steamapis.com</dd>
-  <dt>app(appID)</dt>
-    <dd>Used to return all information on a specific game/application that has been chosen, 730 (CSGO) for example.</dd>
-  <dt>apps()</dt>
-    <dd>Used to return all information on all games tracked by steamapis.com.</dd>
-  <dt>item(appID, market_hash_name)</dt>
-    <dd>Used to return specific information for an item on the community market, provided an appID and Market name are provided.</dd>
-  <dt>items(appID)</dt>
-    <dd>Used to return all information on items for a specific game, that are on the community market. 730 (CSGO) for example.</dd>
-  <dt>cards()</dt>
-    <dd>used to return card data for all of steam.</dd>
-</dl>
-
-
- <h2>Image Specific</h2>
- <dl>
- <dt>itemsImage(appID)</dt>
-    <dd>returns images for items from a sepcific game or app, if appID is provided.</dd>
- </dl>   
-  
-## Usage
-
-Example:
+Use your preferred package manager:
 
 ```sh
-const steamapis = require("simplesteamapis");
-const api = new steamapis("API_KEY");
-
-(async () => {
-  try {
-    const inventory = await api.getInventory("76561198027608071", 730, 2);
-    console.log(inventory);
-  } catch (err) {
-    console.log(err);
-  }
-})();
+npm install simplesteamapis
+# or: yarn add simplesteamapis | pnpm add simplesteamapis | bun add simplesteamapis
 ```
 
-## Author
+&nbsp;
 
-👤 **Ashley Bridges**
+## 🚀 Usage:
 
-- Github: [@idefinehd](https://github.com/idefinehd)
+```js
+const SteamApis = require("simplesteamapis");
+const api = new SteamApis("YOUR_API_KEY");
 
-## Show your support
+// Fetch a user's CS:GO inventory
+const inventory = await api.getInventory("76561198027608071", 730, 2);
 
-Give a ⭐️ if this project helped you!
+// Look up a specific market item
+const item = await api.item(730, "AK-47 | Redline (Field-Tested)");
 
----
+// Get all tracked games
+const apps = await api.apps();
+```
+
+All methods are `async` and return parsed JSON. Errors throw with `err.message`, `err.status`, and `err.data` (the API's JSON error body) attached.
+
+&nbsp;
+
+## 📖 API Reference:
+
+### **Steam:**
+
+| Method                                          | Description                                                                     |
+| ----------------------------------------------- | ------------------------------------------------------------------------------- |
+| `getInventory(steamID, appID, contextID)`       | Fetches a user's Steam inventory for a given game and context.                  |
+| `getLegacyInventory(steamID, appID, contextID)` | Fetches a user's inventory in legacy format, which includes additional fields.  |
+| `getProfile(steamID)`                           | Fetches a user's Steam profile — display name, avatar, visibility, etc.        |
+
+&nbsp;
+
+### **Market:**
+
+| Method                                       | Description                                                                        |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `siteStats()`                                | Platform stats for SteamApis.com — items scanned, requests served, etc.           |
+| `app(appID)`                                 | Detailed information for a specific game or application.                           |
+| `apps()`                                     | Lists all games and applications currently tracked by SteamApis.com.               |
+| `item(appID, market_hash_name)`              | Pricing and metadata for a single item on the Steam Community Market.              |
+| `items(appID)`                               | All tracked market items for a given game.                                         |
+| `compactItems(appID)`                        | Compact market item list — equivalent to passing `format=compact` to the API.     |
+| `CompactItemsWithValue(appID, compact_value)`| Compact market item list with a custom timeframe for price values.                 |
+| `cards()`                                    | Trading card data across all games on Steam.                                       |
+
+&nbsp;
+
+### **Images:**
+
+| Method              | Description                                          |
+| ------------------- | ---------------------------------------------------- |
+| `itemsImage(appID)` | Image URLs for all items within a given game.        |
