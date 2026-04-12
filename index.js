@@ -1,5 +1,3 @@
-const axios = require("axios");
-
 class steamapis {
   constructor(api_key) {
     this.api_key = api_key;
@@ -9,21 +7,21 @@ class steamapis {
   async getLegacyInventory(steamID, appID, contextID) {
     return this.baseRequestWithParameter(
       `steam/inventory/${steamID}/${appID}/${contextID}`,
-      `legacy=1`
+      `legacy=1`,
     );
   }
 
   async compactItems(appID) {
     return this.baseRequestWithParameter(
       `market/items/${appID}`,
-      `format=compact`
+      `format=compact`,
     );
   }
 
   async CompactItemsWithValue(appID, compact_value) {
     return this.baseRequestWithParameter(
       `market/items/${appID}`,
-      `format=compact&compact_value=${compact_value}`
+      `format=compact&compact_value=${compact_value}`,
     );
   }
 
@@ -73,25 +71,43 @@ class steamapis {
   //TODO: Add Extended optional requests to the endpoints
 
   async baseRequest(endpoint) {
-    const res = await axios({
-      url: `http://api.steamapis.com/${endpoint}?api_key=${this.api_key}`,
-      method: "GET",
-      headers: {
-        "User-Agent": "STEAMAPIS NPM PACKAGE",
+    const res = await fetch(
+      `http://api.steamapis.com/${endpoint}?api_key=${this.api_key}`,
+      {
+        method: "GET",
+        headers: {
+          "User-Agent": "STEAMAPIS NPM PACKAGE",
+        },
       },
-    });
-    return res.data;
+    );
+    if (!res.ok) {
+      const body = await res.json().catch(() => null);
+      const err = new Error(`Request failed with status ${res.status}`);
+      err.status = res.status;
+      err.data = body;
+      throw err;
+    }
+    return res.json();
   }
 
   async baseRequestWithParameter(endpoint, QueryParameter) {
-    const res = await axios({
-      url: `http://api.steamapis.com/${endpoint}?api_key=${this.api_key}&${QueryParameter}`,
-      method: "GET",
-      headers: {
-        "User-Agent": "STEAMAPIS NPM PACKAGE",
+    const res = await fetch(
+      `http://api.steamapis.com/${endpoint}?api_key=${this.api_key}&${QueryParameter}`,
+      {
+        method: "GET",
+        headers: {
+          "User-Agent": "STEAMAPIS NPM PACKAGE",
+        },
       },
-    });
-    return res.data;
+    );
+    if (!res.ok) {
+      const body = await res.json().catch(() => null);
+      const err = new Error(`Request failed with status ${res.status}`);
+      err.status = res.status;
+      err.data = body;
+      throw err;
+    }
+    return res.json();
   }
 }
 
