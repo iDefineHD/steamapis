@@ -1,6 +1,6 @@
 # SimpleSteamApis 👋
 
-[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg?cacheSeconds=2592000)](#)
+[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg?cacheSeconds=2592000)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
 > A simple, zero-dependency Node.js wrapper for the [SteamApis.com](http://steamapis.com) API using native `fetch`.
