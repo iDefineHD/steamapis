@@ -1,6 +1,6 @@
 # SimpleSteamApis 👋
 
-[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg?cacheSeconds=2592000)](#)
+[![Version](https://img.shields.io/badge/version-1.0.3-blue.svg?cacheSeconds=2592000)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
 > A simple, zero-dependency Node.js wrapper for the [SteamApis.com](http://steamapis.com) API using native `fetch`.
@@ -52,7 +52,6 @@ All methods are `async` and return parsed JSON. Errors throw with `err.message`,
 | Method                                          | Description                                                                     |
 | ----------------------------------------------- | ------------------------------------------------------------------------------- |
 | `getInventory(steamID, appID, contextID)`       | Fetches a user's Steam inventory for a given game and context.                  |
-| `getLegacyInventory(steamID, appID, contextID)` | Fetches a user's inventory in legacy format, which includes additional fields.  |
 | `getProfile(steamID)`                           | Fetches a user's Steam profile — display name, avatar, visibility, etc.        |
 
 &nbsp;

@@ -4,13 +4,6 @@ class steamapis {
   }
 
   //Added (Optional Query Parameters) as different routes
-  async getLegacyInventory(steamID, appID, contextID) {
-    return this.baseRequestWithParameter(
-      `steam/inventory/${steamID}/${appID}/${contextID}`,
-      `legacy=1`,
-    );
-  }
-
   async compactItems(appID) {
     return this.baseRequestWithParameter(
       `market/items/${appID}`,
